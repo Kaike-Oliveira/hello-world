@@ -8,6 +8,7 @@ import { NotFound } from './pages/NotFound/NotFound';
 
 // COMPONENTS
 import { Navbar } from './components/Navbar/Navbar';
+import { DefaultPage } from 'components/DefaultPage/DefaultPage';
 
 
 function App() {
@@ -17,8 +18,11 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/aboutme" element={<AboutMe />} />
+        <Route path='/' element={<DefaultPage />}>
+          <Route index element={<Home />} />
+          <Route path="aboutme" element={<AboutMe />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1,22 +1,21 @@
 // CORE
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // STYLE
 import styles from './Navbar.module.scss';
+import { MenuLink } from '../NavLink/MenuLink';
 
 export const Navbar = () => {
-
-  const locale = useLocation();
 
   return (
     <header>
       <NavLink className={styles.navigation}>
-        <Link className={styles.link} to='/'>
+        <MenuLink to='/'>
           Home
-        </Link>
-        <Link className={styles.link} to='/aboutme'>
+        </MenuLink>
+        <MenuLink to='/aboutme'>
           About me
-        </Link>
+        </MenuLink>
       </NavLink>
     </header>
   )
