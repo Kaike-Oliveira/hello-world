@@ -2,7 +2,7 @@
 import styles from './Home.module.scss';
 
 // COMPONENTS
-import { Post } from 'components/Post/Post';
+import { PostCard } from 'components/PostCard/PostCard';
 
 // POSTS
 import posts from 'json/posts.json';
@@ -12,7 +12,7 @@ export const Home = () => {
     <ul className={styles.posts}>
       {posts.map((post) => (
         <li key={post.id}>
-          <Post post={post} />
+          <PostCard post={post} />
         </li>
       ))}
     </ul>

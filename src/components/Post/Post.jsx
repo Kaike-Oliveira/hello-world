@@ -1,18 +1,29 @@
+// CORE
+import { useParams } from "react-router-dom"
+import posts from 'json/posts.json';
+import { ModelPost } from "components/ModelPost/ModelPost";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+
 // STYLE
-import styles from './Post.module.scss';
+import './Post.css';
 
-export const Post = ({ post }) => {
+export const Post = () => {
+  const parameters = useParams();
+
+  const post = posts.find((post) => {
+    return post.id === Number(parameters.id);
+  });
+
   return (
-    <div className={styles.post}>
-      <img 
-        className={styles.cover}
-        src={`../../assets/posts/${post.id}/capa.png`}
-        alt='Post cover'
-      />
-
-      <h2 className={styles.title}>{post.title}</h2>
-
-      <button className={styles.readButton}>Read</button>
-    </div>
+    <ModelPost 
+      coverPhoto={`/assets/posts/${post.id}/capa.png`}
+      title={post.title}
+    >
+      <div className="post-markdown-container">
+        <ReactMarkdown>
+        {post.text}
+        </ReactMarkdown>
+      </div>
+    </ModelPost>
   )
 }
